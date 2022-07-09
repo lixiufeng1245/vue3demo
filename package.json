@@ -1,0 +1,65 @@
+{
+  "name": "yxj",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve --mode=dev",
+    "testing": "vue-cli-service build --mode=testing",
+    "build": "vue-cli-service build --mode=prod",
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint",
+    "generateAnalyzFile":"webpack --profile --json > stats.json",
+    "analyz":"webpack-bundle-analyzer --port 3098 ./dist/stats.json"
+
+
+  },
+  "dependencies": {
+    "amfe-flexible": "^2.2.1",
+    "core-js": "^3.8.3",
+    "vue": "^3.2.13",
+    "vue-router": "^4.0.3",
+    "vuex": "^4.0.0",
+    "postcss-px2rem": "^0.3.0",
+    "vant": "^3.1.0-beta.0",
+    "vconsole": "^3.11.0",
+    "px2rem-loader": "^0.1.9",
+    "axios": "^0.21.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-unit-jest": "~5.0.0",
+    "@vue/cli-plugin-vuex": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "@vue/test-utils": "^2.0.0-0",
+    "@vue/vue3-jest": "^27.0.0-alpha.1",
+    "autoprefixer": "^7.2.6",
+    "babel-jest": "^27.0.6",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "husky": "^8.0.1",
+    "jest": "^27.0.5",
+    "lint-staged": "^13.0.1",
+    "node-sass": "^6.0.1",
+    "sass-loader": "^10.2.0",
+    "speed-measure-webpack-plugin": "^1.5.0",
+    "style-resources-loader": "^1.4.1",
+    "webpack-bundle-analyzer": "^4.5.0",
+    "svg-sprite-loader": "^6.0.9"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**": [
+      "prettier --config .prettierrc --write",
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}
