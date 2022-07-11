@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, toRefs } from 'vue'
+import { ref, reactive, toRefs, computed } from 'vue'
 import { useStore } from 'vuex'
 // import {useStore,mapActions} from 'vuex'
 let bads = ref(0)
@@ -33,10 +33,11 @@ let gous = (news) => {
   b.value = news
   toA.a = news
 }
-// let setArticleDetail = async () => {
-//   console.log('haha')
-// }
-// getArticleDetail()
+const userInfo = computed(() => st.getters.userInfo)
+const setArticleDetail = async () => {
+  console.log('haha', userInfo)
+}
+setArticleDetail()
 </script>
 <style scoped>
 .wew {

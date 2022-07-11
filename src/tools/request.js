@@ -2,13 +2,24 @@
  * @Author: leo
  * @FilePath: \yxj\src\http\http.js
  */
-import axios from 'axios'
-import { config, api } from "./api";
+import axios from 'axios';
 import { Toast } from 'vant';
-
+// import { setItem, getItem, removeAllItem } from '@/tools/storage'
+let baseURL = "";
+if (process.env.NODE_ENV == "development") {
+    // 开发环境  因为我这里写了配置跨域的重定路径所以是api
+    baseURL = "/api";
+ 
+} else if (process.env.NODE_ENV == "production") {
+    // 正式环境
+    baseURL = "https://www.baidu.com";
+} else {
+    // 测试环境
+    baseURL = "https://www.ceshi.com";
+}
 
 const baseService = axios.create({
-  baseURL: config.baseUrl,
+  baseURL: baseURL,
   timeout: 5000,
 });
 
@@ -17,7 +28,7 @@ let counter = 0;
 baseService.interceptors.request.use(
   async function (config) {
     counter++ || Toast.loading({ duration: 0 });
-    // const userToken = sessionStorage.getItem('lm_userToken');
+    // const userToken =getItem('lm_userToken');
     // const signature = window.requestHeaderSignature(config.data);
     // if (signature) {
     //   config.headers.Sign = signature.Sign;
@@ -58,11 +69,5 @@ baseService.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-export const getUrl = ()=> {
-  return baseService.get(api.queryCount, {config.exchangeId });
-}
-export const postUrl = () => {
-  return baseService.post(api.queryCount, { config.exchangeId });
-};
 
 

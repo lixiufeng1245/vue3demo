@@ -1,10 +1,7 @@
 import { login, getUserInfo } from '@/api/sys'
-import md5 from 'md5'
-import { setItem, getItem, removeAllItem } from '@/utils/storage'
-import { TOKEN } from '@/constant'
-import router, { resetRouter } from '@/router'
-import { setTimeStamp } from '@/utils/auth'
-
+import { setItem, getItem, removeAllItem } from '@/tools/storage'
+import router from '@/router'
+const TOKEN = "123456" //只用作例子后期会从后台获取
 export default {
   namespaced: true,
   state: () => ({
@@ -12,7 +9,7 @@ export default {
     userInfo: {}
   }),
   mutations: {
-    setToken(state, token) {
+    setToken(state, token) { 
       state.token = token
       setItem(TOKEN, token)
     },
@@ -21,17 +18,15 @@ export default {
     }
   },
   actions: {
-    login(context, userInfo) {
+    login(userInfo) {
       const { username, password } = userInfo
       return new Promise((resolve, reject) => {
         login({
           username,
-          password: md5(password)
+          password
         })
           .then(data => {
             this.commit('user/setToken', data.token)
-            // 保存登录时间
-            setTimeStamp()
             resolve()
           })
           .catch(err => {
@@ -39,13 +34,12 @@ export default {
           })
       })
     },
-    async getUserInfo(context) {
+    async getUserInfo() {
       const res = await getUserInfo()
       this.commit('user/setUserInfo', res)
       return res
     },
     logout() {
-      resetRouter()
       this.commit('user/setToken', '')
       this.commit('user/setUserInfo', {})
       removeAllItem()
