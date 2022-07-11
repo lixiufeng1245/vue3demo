@@ -33,9 +33,9 @@ let gous = (news) => {
   b.value = news
   toA.a = news
 }
-let getArticleDetail = async () => {
-  console.log('haha')
-}
+// let setArticleDetail = async () => {
+//   console.log('haha')
+// }
 // getArticleDetail()
 </script>
 <style scoped>

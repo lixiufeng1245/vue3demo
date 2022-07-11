@@ -88,7 +88,7 @@ export function dateFormat(date, isSeason= false, type) {
   return mapDate['y'] + format + mapDate['m'] + format + mapDate['d']
 }
 
-export function timeFormat (date) {
+export const timeFormat = date => {
   if(!date) return ''
   const time =  new Date(date)
   const format = '-'
