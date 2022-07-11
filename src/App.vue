@@ -9,6 +9,7 @@
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
+  
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -20,7 +21,8 @@ nav {
 }
 
 nav a {
-  width:100px;
+  width:100px ;
+
   font-weight: bold;
   color: #2c3e50;
 }

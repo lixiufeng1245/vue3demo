@@ -1,11 +1,7 @@
 <template>
-    <div>error</div>
+  <div>error</div>
 </template>
-  
-<script setup>
-  
-</script>
-  
-<style>
-  
-</style>
+
+<script setup></script>
+
+<style></style>
