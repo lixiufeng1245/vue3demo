@@ -36,7 +36,7 @@ let gous = (news) => {
 let getArticleDetail = async () => {
   console.log('haha')
 }
-getArticleDetail()
+// getArticleDetail()
 </script>
 <style scoped>
 .wew {

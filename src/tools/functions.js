@@ -88,7 +88,7 @@ export function dateFormat(date, isSeason= false, type) {
   return mapDate['y'] + format + mapDate['m'] + format + mapDate['d']
 }
 
-export function timeFormat(date) {
+export function timeFormat (date) {
   if(!date) return ''
   const time =  new Date(date)
   const format = '-'
@@ -106,7 +106,7 @@ export function timeFormat(date) {
 }
 
 // 判断安卓or IOS
-export function userAgent() { 
+export const userAgent = () =>{ 
   //  安卓true IOS-false
   const u = navigator.userAgent
   if(u.indexOf("iPhone") > -1 || u.indexOf("iOS") > -1) return false
